@@ -4,51 +4,8 @@
     <title>
     </title>
     <meta charset="utf-8">
-    <script>
-
-        // var Links = {
-        //
-        // }
-
-        function linksSetColor(color) {
-            var alist = document.querySelectorAll('a');
-            var i = 0;
-            while (i < alist.length) {
-                alist[i].style.color = color;
-                i = i + 1;
-            }
-        }
-
-        function backSetColor(color) {
-            var target = document.querySelector('body');
-            target.style.backgroundColor = color;
-
-        }
-
-        function fontSetColor(color) {
-            var target = document.querySelector('body');
-            target.style.color = color;
-        }
-
-        function nightDayHandler(self) {
-
-            if (self.value === 'night') {
-                backSetColor('black');
-                fontSetColor('white');
-                self.value = 'day';
-
-                linksSetColor('powderblue');
-
-            } else {
-                backSetColor('white');
-                fontSetColor('black');
-                self.value = 'night';
-
-                linksSetColor('blue');
-            }
-        }
-    </script>
-
+    <link rel="stylesheet" href="style.css">
+    <script src="colors.js"></script>
 </head>
 <body>
 <h1><a href="index.html">WEB</a></h1>

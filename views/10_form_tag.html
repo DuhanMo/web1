@@ -40,6 +40,7 @@
 		<input type="text" size="20" name="search">
 		&nbsp; <input type="submit" value="검색" >
 	</form>
+
 	<p>
 		input 태그의 값을 사용자에게서 입력 받은 뒤에
 		서버로 전달할 때에는 반드시 input태그 타입 중
@@ -60,6 +61,25 @@
 			<label>입력 2: </label> <input type="text"><br>
 			<label>입력 3: </label> <input type="text"><br>
 		</fieldset>
+
+		<form method="post" target="_blank">
+			<h2>text 관련 input 태그</h2>
+			<h3>type="text"</h3>
+			<input type="text" name="txt1" >
+			<p>한줄 짜리 텍스트를 작성할 수 있는 타입</p>
+			<h3>type="password"</h3>
+			<input type="password" name="userpwd">
+			<p>비밀번호를 입력할 수 있는 타입</p>
+			<h3>type="search"</h3>
+			<input type="search" name="search" placeholder="키워드를 입력하세요">
+			<p>검색전용 박스를 제공한다 </p>
+
+			<h3>type="email"</h3>
+			<input type="email" name="email">
+			<p> 입력한 정보가 이메일이 맞는지 검사하는 태그</p>
+
+
+		</form>
 	</form>
 </body>
 </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>폼 관련 태그</title>
+</head>
+<body>
+	<h1>폼 관련 태그</h1>
+	<!-- 
+		form 태그는 html 웹 문서에서 사용자가 입력하는
+		특정 양식의 데이터를 지정한 페이지로 전송할 수 있는
+		요소들을 제공한은 태그이다.
+
+		form안에 input태그들로 양식을 받을 형태를 구성하며
+		해당 input 태그들은 사용자가 입력한 정보를 받아서
+		서버로 전달하는 역할을 수행한다.
+
+		** 속성 **
+		action : 작성한 데이터를 전달할 웹 페이지 경로
+		method : 전달할 때 전송 방식을 GET/POST 와 같은 HTTP통신의 전송 방식을 설정하는 속성
+
+		1. get 방식
+		 - URL의 끝에 데이터를 첨부해서 전송하는 방식
+		 - ex21_ok.jsp?name=홍길동&age=25
+		 - ?name=홍길동&age=25 : Query String
+		 - 수신측 URL/?전송할데이터
+		 - 키=값&키=값(get방식 패턴)
+		 - 단점 : 항상 노출이 된다.(보안 중요한 데이터 사용 금지)
+		 		URL 최대 255자 까지(오버플로우 : 데이터 잘림)
+		 		URL은 인코딩 방식이 base64(한글포함x)
+		2. post 방식
+		 - 패킷의 본문안에 데이터를 넣어서 전송하는 방식
+		 - 데이터 노출이 없다(보안상 조금 더 안전)
+		 - 제한 크기 무제한
+		 - 한글 상관 없이 전송 가능
+
+	 -->
+	<form>
+		<label>검색 :</label>
+		<input type="text" size="20" name="search">
+		&nbsp; <input type="submit" value="검색" >
+	</form>
+	<p>
+		input 태그의 값을 사용자에게서 입력 받은 뒤에
+		서버로 전달할 때에는 반드시 input태그 타입 중
+		'submit'이라는 타입을 사용하여 전달한다
+	</p>
+	<hr>
+	<form>
+		<fieldset> <!-- HTML 요소를 박스로 묶어주는 태그로 주로 form 내부에 사용-->
+			<legend>필드셋의 제목 1</legend><!--fieldset에 제목을 달아주는 태그-->
+			<label>입력 1: </label> <input type="text"><br>
+			<label>입력 2: </label> <input type="text"><br>
+			<label>입력 3: </label> <input type="text"><br>
+		</fieldset>
+		<br>
+		<fieldset> <!-- HTML 요소를 박스로 묶어주는 태그로 주로 form 내부에 사용-->
+			<legend>필드셋의 제목 2 : 영역별로 구분 가능</legend><!--fieldset에 제목을 달아주는 태그-->
+			<label>입력 1: </label> <input type="text"><br>
+			<label>입력 2: </label> <input type="text"><br>
+			<label>입력 3: </label> <input type="text"><br>
+		</fieldset>
+	</form>
+</body>
+</html>

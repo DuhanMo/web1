@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>하이퍼링크 관련 태그</title>
+</head>
+<body>
+    <h1>하이퍼링크 관련 태그</h1>
+    <!--
+        하이퍼링크란, 특정한 문자열을 연관 페이지나
+        주소와 연결시켜 둘 사이를 이동시키는 문서간 이동 기술
+        클릭을 통해 다른 페이지 혹은 같은 페이지의 특정 구간으로
+        이동할 수 있고, 이미지를 클릭해서 이동할 수도 있다.
+    -->
+    <!-- a(anchor)태그를 활용해 하이퍼링크 만들기-->
+    <h3>a 태그의 기본 문법</h3>
+    <ul>
+        <li><a href="index.html">처음 페이지로 이동하기</a></li>
+        <li><a href="1_글자관련태그.html">글자관련태그페이지로 이동하기</a></li>
+        <li><a href="3_글자와목록태그연습문제.html">글자와목록태그연습문제로 이동하기</a></li>
+    </ul>
+
+    <!--만약 인터넷이 연결되어 있는 상태라면 특정 웹 페이지도 링크로 연결할 수 있다.
+        target 속성을 활용하여 링크가 열릴 페이지를 설정할 수도 있다.
+    -->
+    <h3>외부 웹 페이지 연결하기</h3>
+    <ul>
+        <li><a href="http://www.naver.com" targer="_self">네이버</a></li>
+        <li><a href="http://www.google.com" targer="_blank">구글</a></li>
+        <li><a href="http://www.daum.net" targer="_top">다음</a></li>
+    </ul>
+
+    <hr>
+
+    <h3>이미지에 하이퍼링크 적용하기</h3>
+    <a href="http://www.naver.com">
+        <img src="../resource/image/river1.PNG">
+    </a>
+
+    <!--한 페이지내에서 다른 영역, 특정 부분으로 이동하는 하이퍼링크 작성하기-->
+    <h3>한 페이지내에서 특정 부분으로 이동</h3>
+
+    <a href="http://guny.kr/stuff.klorem/">한글 lorem ipsum(임시 문자열 등록)</a>
+
+    <ul>
+        <li><a href="#content1">본문내용1</a></li>
+        <li><a href="#content2">본문내용2</a></li>
+        <li><a href="#content3">본문내용3</a></li>
+    </ul>
+
+    <h4 id="content1">본문내용1</h4>
+    <p></p>
+    <h4 id="content2">본문내용2</h4>
+    <p></p>
+    <h4 id="content3">본문내용3</h4>
+    <p></p>
+
+
+
+
+
+
+
+
+
+    <br><br><br>
+    <br><br><br>
+
+    <a href="index.html">처음 페이지로 이동하기</a>
+
+
+</body>
+</html>

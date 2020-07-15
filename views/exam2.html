@@ -20,9 +20,14 @@
     <fieldset>
         <legend>납품 정보</legend>
         <ul>
-            <li><label>상품명 :</label><input type="text"></li><br>
+            <li><label>상품명 :</label><input type="text" name="" id=""></li><br>
 
-            <label>상품명 </label><input type="text">
+            <label for="product1">상품명1 </label>
+            <input type="text" name="product1" list="productlist">
+            <datalist id="productlist">
+                <option value="book">책</option>
+                <option value="car">차</option>
+            </datalist>
             <li><label>납품수량 : </label><input type="text" placeholder="최소 100"></li><br>
             <li><label>납품등급 : </label><input type="range" value="3" max="5" min="1" step="1"></li><br>
             <li><label>기타사항 : </label><textarea cols="30" rows="5" style="resize: none"></textarea> </li>

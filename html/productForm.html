@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <style>
+        fieldset{
+            width: fit-content;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="testw/product" method="post">
+        <fieldset style="width: 40%">
+
+            <legend>납품자 정보</legend>
+            <ol>
+                <li><label for="name">납품자명 : </label><input type="text" name="name" id="name" placeholder="name" required autocomplete='on'></li><br>
+                <li><label for="email">email : </label><input type="email" name="email" id="email" placeholder="answs@naver.com" required autocomplete='on'></li><br>
+                <li><label for="page">홈페이지 : </label><input type="url" name="url" id="page" placeholder="http://" required autocomplete='on'></li>
+            </ol>
+        </fieldset>
+        <br>
+        <fieldset style="width: 40%">
+            <legend>납품 정보</legend>
+            <ul>
+                <li><label for="prName">상품명 : </label><input type="text" name="prName" id="prName" list="prList" required autocomplete='on'> <datalist id="prList">
+                    <option value="book">책</option>
+                    <option value="car">차</option>
+                </datalist></li><br>
+                <li><label for="prNo">납품수량 : </label><input type="text" id="prNo" placeholder="최소 100" required autocomplete='on'></li><br>
+                <li><label for="prGrade">납품등급 : </label><input type="range" id="prGrade" value="3" max="5" min="1" step="1" required autocomplete='on'></li><br>
+                <li><label for="other">기타사항 : </label><textarea id="other" cols="30" rows="5"  required autocomplete='on'></textarea> </li>
+            </ul>
+        </fieldset>
+        <br>
+        <button type="submit">send message</button>
+    </form>
+</body>
+</html>

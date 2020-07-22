@@ -23,5 +23,166 @@
             area1.innerHTML = '<br>'+"아이디로 접근 성공"+'<br>'+"asdasd";
         }
     </script>
+
+    <hr>
+    <h3>name 속성으로 접근하기</h3>
+    <form>
+        <fieldset>
+            <legend>취미 선택하기</legend>
+            <table>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="hobby" id="Java" value="Java">
+                        <label for="Java">Java 공부하기</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="hobby" id="HTML" value="HTML">
+                        <label for="HTML">HTML 공부하기</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="hobby" id="Oracle" value="Oracle">
+                        <label for="Oracle">Oracle 공부하기</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="hobby" id="Movie" value="Movie">
+                        <label for="Movie">영화 감상</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="hobby" id="TV" value="TV">
+                        <label for="TV">TV 시청</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="hobby" id="Sleep" value="Sleep">
+                        <label for="Sleep">숙면</label>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+    <div id="area2" class="area"></div>
+    <button onclick="accessName();">이름으로 접근하기</button>
+    <script>
+        function accessName() {
+            var hobby = document.getElementsByName('hobby')
+            console.log("hobby의 갯수" + hobby.length);
+
+            var resultItem  = "";
+
+            for (var i in hobby) {
+                console.log(i);
+                if(hobby[i].checked == true){
+                    resultItem += hobby[i].value + "선택하셨습니다.<br>"
+                }
+            }
+            console.log("선택내역 : " + resultItem);
+            document.getElementById('area2').innerHTML = resultItem;
+        }
+    </script>
+    <hr>
+    <h3>태그명으로 접근하기</h3>
+    <ul id="ulId">
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록4</li>
+        <li>목록5</li>
+    </ul>
+    <button onclick="accessTagName();">태그명으로 접근하기</button>
+    <script>
+        function accessTagName() {
+            var list = document.getElementsByTagName('li')
+            console.log("전달받은 li개수 : " + list.length)
+            var changeColor = 50;
+            // for (var i in list) {
+            //     console.log(list[i]);
+            //     list[i].style.backgroundColor = "rgb(130,220,"+changeColor+")";
+            //     changeColor +=50;
+            // }
+            for (var i = 0; i < list.length; i++) {
+                console.log(list[i])
+                list[i].style.backgroundColor = "rgb(130,220,"+changeColor+")";
+                changeColor +=100;
+
+            }
+
+        }
+    </script>
+    <hr>
+    <h3>textBox 안의 value 읽어오기</h3>
+    <form>
+        이름 : <input type="text" name="userName" id="userName"> <br>
+        <input type="button" value="input값읽어오기" onclick="readValue();">
+
+    </form>
+    <div id="area3" class="area"></div>
+    <script>
+        function readValue() {
+            var inputValue = document.getElementById('userName');
+            console.log(inputValue.value);
+            if(inputValue.value == "" || inputValue.value.length==0){
+                alert('이름을 반드시 입력해주세요.');
+                inputValue.focus();
+            }else{
+                document.getElementById('area3').innerHTML = inputValue.value + "님 환영합니다.";
+            }
+
+        }
+    </script>
+    <hr>
+
+    <h3>input:password 활용하여 비밀번호 유효성 검증하기</h3>
+    <p>
+        비밀번호를 입력 받아<br>
+        8자 미만이면 : 8자 이상 작성하셔야 합니다. <br>
+        16자 이상이면 : 15자 이내로 작성하셔야 합니다. <br>
+        값이 비었을 경우 : 비밀번호를 입력해주세요 <br>
+        정상일 경우 : 로그인에 성공하였습니다. <br>
+        출력하기
+    </p>
+    <form>
+        비밀번호 : <input type="password" name="userPwd" id="userPwd" placeholder="8자 이상 15자 이내로 작성하세요.">
+        <br><button type="button" onclick="pwdValidation();">로그인하기</button>
+    </form>
+    <div id="area4" class="area"></div>
+
+    <script>
+        function pwdValidation(){
+            var pwd=document.getElementById('userPwd');
+            var result = "";
+
+            //switch문
+            switch(validate(pwd)){
+                case 1:alert("비밀번호를 입력해야 합니다.");
+                    result = "다시 입력해주세요!";
+                    break;
+                case 2:alert("8개 이상 이어야 합니다.");
+                    result = "다시 입력해주세요!";
+                    break;
+                case 3:alert("15개 이내로 입력하여야 합니다.");
+                    result = "다시 입력해주세요!";
+                    break;
+                case 0:alert("로그인에 성공하였습니다.");
+                    result = "성공!";
+                    break;
+            }
+            document.getElementById('area4').innerHTML = result;
+        }
+
+        function validate(pw){
+            var result=0;
+
+            if(pw.value == "" || pw.value.length == 0){
+                result=1;
+            }else if(pw.value.length<8) {
+                result=2;
+            }else if(pw.value.length>15) {
+                result=3;
+            }
+
+            return result;  // result를 반환하겠다.
+        }
+    </script>
 </body>
 </html>

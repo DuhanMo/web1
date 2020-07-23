@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>테이블만들기</title>
+</head>
+<body>
+    <h3>테이블 생성하기</h3>
+    <button onclick="createTable1();">테이블 생성</button>
+    <button onclick="createTable2();">테이블 생성</button>
+    <div id="area1"></div>
+    <script>
+
+        function createTable1() {
+            var row = prompt('행을 입력하세요.');
+            var col = prompt('열을 입력하세요.');
+            var tbl = "";
+            var divTb = document.getElementById('area1');
+
+            tbl+="<table border='1px'>";
+            for (var i = 0; i < row; i++) {
+                // row
+                tbl +="<tr height=''50px'>";
+                for (var j = 0; j < col ; j++) {
+                    tbl += "<td width='50px'></td>";
+
+                }
+                tbl +="</tr>";
+            }
+            divTb.innerHTML = tbl;
+        }
+    </script>
+</body>
+</html>

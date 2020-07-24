@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .area1 {
+            border: 1px solid black;
+            height: 200px;
+            background-color: lightgreen;
+        }
+
+        .area2 {
+            border: 1px solid black;
+            height: 150px;
+            background-color: lightgreen;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>데이터 형변환</h1>
+    <h3>문자열과 숫자의 '+' 연산</h3>
+    <p>
+        문자열 + 숫자 = 문자열이 된다.<br>
+        숫자 + 숫자 + 문자열 = 숫자가 먼저 계산이 되고 뒤의 문자열과 합쳐진다.
+    </p>
+    <button onclick="testPlus()">문자열과 숫자의 '+' 연산</button>
+    <div id="area1" class="area2"></div>
+    <script>
+        function testPlus() {
+            var area1 = document.getElementById('area1');
+            var test1 = 7 + 7;
+            area1.innerHTML += '7 + 7 = ' + test1 + "<br>";
+            var test2 = 7 + "7";
+            area1.innerHTML += "7 + '7' = " + test2 + '<br>';
+            var test3 = "7" + 7;
+            area1.innerHTML += "'7' + 7 = " + test3 + '<br>';
+            var test4 = "7" + "7";
+            area1.innerHTML += "'7' + '7' = " + test4 + '<br>';
+            var test5 = 7 + 7 + "7";
+            area1.innerHTML += "7 + 7 + '7' = " + test5 + '<br>';
+            var test6 = 7 + "7" + 7;
+            area1.innerHTML += "7 + '7' + 7 = " + test6 + '<br>';
+            var test7 = "7" + 7 + 7;
+            area1.innerHTML += "'7' + 7 + 7 = " + test7 + '<br>';
+        }
+    </script>
+</body>
+</html>

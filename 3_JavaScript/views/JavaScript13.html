@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>객체</title>
+    <style>
+        .area-big {
+            height: 400px;
+            background: lightgrey;
+            border: 1px solid black;
+        }
+
+        .area {
+            height: 200px;
+            background: lightgrey;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체</h1>
+    <h3>객체의 선언 및 호출</h3>
+    <p>
+        객체는 키값을 사용하여 속성을 식별한다.<br>
+        중괄호{}를 사용해서 객체를 생성하고, 속성에는 모든 자료형이 올 수 있다.
+    </p>
+    <button onclick="test1();">실행확인</button>
+    <div id="area1" class="area-big"></div>
+    <script>
+        function test1() {
+            var product = {
+                pName     : 'Dry Mango',
+                type      : 'Pickle',
+                ingredient: ['mango', 'sugar'],
+                origin    : 'Philippines',
+
+            };
+            console.log(product);
+            var area1 = document.getElementById('area1');
+            area1.innerHTML += "product : " + product + "<br><br>";
+            area1.innerHTML += "<b>객체명['속성명']으로 접근하기 </b><br><br>";
+            area1.innerHTML += "product['pName'] :" + product['pName'] + "<br>";
+            area1.innerHTML += "product['type'] :" + product['type'] + "<br>";
+            area1.innerHTML += "product['ingredient'] :" + product['ingredient'] + "<br>";
+            area1.innerHTML += "product['ingredient'][0] :" + product['ingredient'][0] + "<br>";
+            area1.innerHTML += "product['ingredient'][1] :" + product['ingredient'][1] + "<br>";
+            area1.innerHTML += "product['origin'] :" + product['origin'] + "<br>";
+
+            area1.innerHTML += "<b>객체명.속성명으로 접근하기</b><br><br>"
+            area1.innerHTML += "product.pName : " + product.pName + "<br>";
+            area1.innerHTML += "product.type : " + product.type + "<br>";
+            area1.innerHTML += "product.ingredient : " + product.ingredient + "<br>";
+            area1.innerHTML += "product.ingredient[0] : " + product.ingredient[0] + "<br>";
+            area1.innerHTML += "product.ingredient[1]: " + product.ingredient[1] + "<br>";
+
+
+        }
+    </script>
+    <hr>
+    <h3>객체의 키 식별자 테스트</h3>
+    <button onclick="test2();">실행확인</button>
+    <div id="area2" class="area"></div>
+    <script>
+        function test2() {
+            var objTest = {
+                'I Love'     : '유승제',
+                'I hate !@#$': '코로나19',
+
+
+            }
+            var area2 = document.getElementById('area2');
+            console.log(objTest);
+
+            // 키 값이 공백이나 특수문자가 존재하면 객체명.속성명으로 접근할 수 없다.
+            area2.innerHTML += "I Love :" + objTest["I Love"] + '<br>';
+            area2.innerHTML += "I hate !@#$   :" + objTest["I hate !@#$"] + '<br>';
+
+        }
+    </script>
+</body>
+</html>

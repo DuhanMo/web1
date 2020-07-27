@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>간이계산기만들기</title>
+</head>
+<body>
+    <h2>간이 계산기 만들기 </h2>
+
+    첫번째 값 : <input type="number" id="num1"><br>
+    두번째 값 : <input type="number" id="num2"><br>
+    <input type="button" value="+" onclick="calculator(this.value);">
+    <input type="button" value="-" onclick="calculator(this.value);">
+    <input type="button" value="*" onclick="calculator(this.value);">
+    <input type="button" value="/" onclick="calculator(this.value);">
+    <input type="button" value="%" onclick="calculator(this.value);"><br><br>
+    계산결과 : <span id="calc"></span>
+
+    <hr>
+
+    <script>
+        function calculator(value){
+            var su1 = Number(document.getElementById("num1").value);
+            var su2 = Number(document.getElementById("num2").value);
+            var result = 0;
+            switch(value){ // +,-,*,/,%
+            case "+" : result = su1 + su2; break;
+            case "-" : result = su1 - su2; break;
+            case "*" : result = su1 * su2; break;
+            case "/" : result = su1 / su2; break;
+            case "%" : result = su1 % su2; break;
+            }
+            console.log(result);
+            document.getElementById("calc").innerHTML = result;
+        }
+    </script>
+    <br><br><br>
+    <br><br><br>
+    <a href="../index.html">처음으로 돌아가기</a>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클로저</title>
+</head>
+
+<body>
+    <h1>클로저</h1>
+    <h3>지역변수의 스코프</h3>
+    <p>함수 내부에 선언된 변수는 함수 밖에서 사용할수 없다</p>
+    <button onclick="test1();">실행확인</button>
+    <script>
+        function test1() {
+            var name = "김주호";
+            //  alert(name);
+
+        }
+        alert(name);
+    </script>
+
+    <hr>
+
+    <h3>클로저</h3>
+    <p>지역변수 함수가 실행될떄 생성되고 함수가 종료될때 사라진다.<br>
+        하지만 함수를 리턴하는 함수(클로저)를 이용하면 해당 규칙을 위반 할수
+        있다.
+    </p>
+    <button onclick="callCloser();">실행확인</button>
+    <script>
+        function test2(name) {
+            var output = "Hello" + name + "님!";
+            return function () {
+                return output;
+            }
+        }
+        function callCloser() {
+            var input = prompt();
+            var str = test2(input)();
+            alert(str);
+
+        }
+    </script>
+
+    <h3>여러개의 클로저</h3>
+    <!-- this 는 태그에 대한 정보를 다가져온다 -->
+    <button onclick="test4(this);" id="js">javascript</button>
+    <button onclick="test4(this);" id="jq">javaquery</button>
+    <script>
+        function test3(subject){
+            var out ="오늘 배울 내용은"+subject+"입니다";
+            return function(){
+                return out;
+
+            }
+        }
+        function test4(button){
+            // 아이디가 js인 버튼 객체 가져온것
+            var btn1 = document.getElementById('js');
+            var btn2=document.getElementById('jq');
+
+            if(button == btn1){
+                btn1.style.display ="none";
+                btn2.style.display="block";
+                alert(test3(btn1.innerHTML)());
+
+            }else{
+                btn1.style.display="block";
+                btn2.style.display='none';
+                alert(test3(btn2.innerHTML)());
+            }
+
+        }
+    </script>
+
+    <br><br><br>
+    <br><br><br>
+    <a href="../index.html">처음으로 돌아가기</a>
+
+</body>
+
+</html>

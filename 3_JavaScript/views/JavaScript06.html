@@ -1,50 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>데이터 형변환</title>
     <style>
-        .area1 {
-            border: 1px solid black;
-            height: 200px;
-            background-color: lightgreen;
-        }
-
-        .area2 {
-            border: 1px solid black;
-            height: 150px;
-            background-color: lightgreen;
-        }
-
+        .area1{ border: 1px solid black; height: 200px;}
+        .area2{ border: 1px solid black; height: 150px;}
     </style>
 </head>
 <body>
     <h1>데이터 형변환</h1>
-    <h3>문자열과 숫자의 '+' 연산</h3>
-    <p>
-        문자열 + 숫자 = 문자열이 된다.<br>
-        숫자 + 숫자 + 문자열 = 숫자가 먼저 계산이 되고 뒤의 문자열과 합쳐진다.
+    <h3>문자열 과 숫자의 '+'연산</h3>
+    <p>문자열 + 숫자 = 문자열이된다.<br>
+       숫자+숫자 + 문자열 = > 숫자가 먼저 계산이 되고 뒤의 문자열과 합쳐진다.
     </p>
-    <button onclick="testPlus()">문자열과 숫자의 '+' 연산</button>
-    <div id="area1" class="area2"></div>
+    <button onclick="testPlus();">문자열과 숫자의'+'연산</button>
+    <div id="area1" class="area1"></div>
     <script>
-        function testPlus() {
+        function testPlus(){
             var area1 = document.getElementById('area1');
             var test1 = 7 + 7;
-            area1.innerHTML += '7 + 7 = ' + test1 + "<br>";
-            var test2 = 7 + "7";
-            area1.innerHTML += "7 + '7' = " + test2 + '<br>';
-            var test3 = "7" + 7;
-            area1.innerHTML += "'7' + 7 = " + test3 + '<br>';
+            area1.innerHTML += '7 + 7 =' + test1 +"<br>";
+            var test2 = 7 + "7"; 77
+            area1.innerHTML += '7 + "7" =' + test2 +"<br>";
+            var test3 = "7" + 7; 
+            area1.innerHTML += '"7" + 7 =' + test3 +"<br>";
             var test4 = "7" + "7";
-            area1.innerHTML += "'7' + '7' = " + test4 + '<br>';
+            area1.innerHTML += '"7" + "7" =' + test4 +"<br>";
             var test5 = 7 + 7 + "7";
-            area1.innerHTML += "7 + 7 + '7' = " + test5 + '<br>';
+            area1.innerHTML += '7 + 7 + "7" =' + test5 +"<br>"; //147
             var test6 = 7 + "7" + 7;
-            area1.innerHTML += "7 + '7' + 7 = " + test6 + '<br>';
+            area1.innerHTML += '7 + "7" + 7 =' + test6 +"<br>"; // 777
             var test7 = "7" + 7 + 7;
-            area1.innerHTML += "'7' + 7 + 7 = " + test7 + '<br>';
+            area1.innerHTML += '"7" + 7 + 7 =' + test7 +"<br>"; // 777
+            var test8 = "7" + (7 + 7);
+            area1.innerHTML += '"7" + (7 + 7) =' + test8 +"<br>"; // 714
+
         }
     </script>
+
+    <hr>
+
+    <h3>강제 형변환</h3>
+    <p>Number(), parseInt(),parseFloat() 함수를 이용하여 강제 형변환할 수 있다.</p>
+    <button onclick="castingTest();">casting테스트</button>
+    <script>
+        function castingTest(){
+            var num1 = 2;
+            var num2 = "3";
+
+            console.log(num1 + num2); // 23
+            console.log(num1 + Number(num2)); 
+            console.log(num1 + parseInt(num2));
+            console.log(num1 + parseFloat(num2));
+        }
+    </script>
+
+    <br><br><br>
+    <br><br><br>
+    <a href="../index.html">처음으로 돌아가기</a>
 </body>
 </html>

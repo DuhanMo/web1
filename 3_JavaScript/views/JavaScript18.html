@@ -149,5 +149,52 @@
     <!--    replace 페이지 이동하면서 히스토리를 지워버림-->
     <button onclick="location.replace('http://google.com')">구글로 이동하기</button>
 
+    <hr>
+    <h3>navigator object</h3>
+    <p>
+        The information about a Browser running web page
+    </p>
+    <button onclick="test7();">Check execute</button>
+    <div id="area4" class="area-big"></div>
+    <script>
+        function test7() {
+            var str = "";
+
+            for (var key in navigator) {
+                str += key + ' : ' + navigator[key] + '\n';
+            }
+            alert(str);
+            var area4 = document.getElementById('area4');
+            area4.innerHTML += '브라우저의 코드명 : ' + navigator.appCodeName + '<br>';
+            area4.innerHTML += '브라우저의 이름 : ' + navigator.appName + '<br>';
+            area4.innerHTML += '브라우저의 전체 정보 : ' + navigator.userAgent + '<br>';
+            area4.innerHTML += '브라우저의 언어 : ' + navigator.language + '<br>';
+            area4.innerHTML += '사용중인 운영체제 : ' + navigator.platform + '<br>';
+        }
+
+
+    </script>
+    <hr>
+    <h1>geo location</h1>
+    <h3>현재위치 가져오기</h3>
+    <p>
+        getCurrentPosition() 을 호출하여 사용자의 현재위치를 가져온다.<br>
+        응답은 빠르지만 정확도는 낮다.
+    </p>
+    <button onclick="test8();">실행확인</button>
+    <div id="map" style="width: 500px; height: 400px;"></div>
+    <script>
+        function test8() {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                alert("위도 : " + position.coords.latitude + '\n' +
+                        '경도 + ' + position.coords.longitude );
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+
+               location.href = "http://map.daum.net/link/map/나의위치,"+lat+","+lon;
+            });
+
+        }
+    </script>
 </body>
 </html>

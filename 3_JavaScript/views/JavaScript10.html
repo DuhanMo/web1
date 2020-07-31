@@ -57,8 +57,22 @@
     <div id="area3" class="area"></div>
     <script>
         function returnFunction(){
-            
+            var name = document.getElementById('name').value;
+
+            var f = function(){
+                alert(name + '님 환영합니다.');
+            }
+
+            return f;
+        }
+
+        function callFunction(){
+           returnFunction()();
         }
     </script>
+
+    <br><br><br>
+    <br><br><br>
+    <a href="../index.html">처음으로 돌아가기</a>
 </body>
 </html>

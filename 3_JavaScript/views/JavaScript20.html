@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트</title>
+    <style>
+        .area{ background: lightgray; border: 1px solid black; height: 100px;}
+        .div-test{border:1px solid black; padding: 20px;}
+        .div1{background: red;}
+        .div2{background: orange;}
+        .div3{background: yellow;}
+        .div4{background: green;}
+    </style>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <h3>고전 이벤트 모델</h3>
+    <button id="test1">test1()실행확인</button>
+    <button id="test2">test2()실행확인</button>
+    <div id="area1" class="area"></div>
+    <script>
+        var test1 = document.getElementById("test1");
+        var test2 = document.getElementById("test2");
+
+        test1.onclick = function(){
+            var area1 = document.getElementById('area1');
+            area1.innerHTML += "test1()이 실행되었습니다.<br>";
+        }
+
+        test2.onclick = function(){
+            var area1 = document.getElementById('area1');
+            area1.innerHTML += "test2()가 실행되면서 test1()이벤트 제거한다.<br>";
+            test1.onclick = null;
+        }
+    </script>
+
+    <hr>
+
+    <h3>이벤트 발생 객체</h3>
+    <button id="test3">test3()실행확인</button>
+    <div id="area2" class='area'></div>
+    <script>
+        var test3 = document.getElementById('test3');
+
+        test3.onclick = function(e){
+            this.style.background = "red";
+            this.style.color="white";
+
+            // 넘어온 값이 있으면 e값을 대입, 없으면 window.event값을 대입(IE는 e값이 안넘어옴);
+            var event = e || window.event;
+
+            var area2 = document.getElementById('area2');
+
+            for(var key in event){
+                area2.innerHTML += key + " : " + event[key] + "<br>";
+            }
+        };
+    </script>
+
+    <hr>
+
+    <h3>인라인 이벤트 모델</h3>
+    <button onclick="test4();">실행확인</button>
+    <div id="area3" class="area"></div>
+    <script>
+        function test4(){
+            alert("test4() 실행확인");
+        }
+    </script>
+
+    <br>
+    <button onclick="var test='안녕하세요'; alert(test);">alert테스트</button>
+
+    <hr>
+
+    <h3>표준 이벤트 모델</h3>
+    <p>한번에 여러가지 이벤트 핸들러를 추가할 수 있다.<br>
+       IE9버전부터 지원한다.
+    </p>
+    <button id="btn">실행확인</button>
+    <script>
+        window.onload = function(){
+            var btn = document.getElementById('btn');
+
+            btn.addEventListener('click',function(){
+                alert('표준이벤트');
+            });
+
+            btn.addEventListener('mouseenter',function(){
+                btn.style.background = "red";
+            });
+        };
+    </script>
+
+    <hr>
+
+    <h3>기본 이벤트의 제거</h3>
+    <p>a태그는 클릭하면 다른 페이지로 이동한다.<br>
+       submit버튼이나 form 안의 일반 버튼을 누르면 자동으로 입력 양식을 제출하고 새로고침을 한다.
+    </p>
+    <form>
+		<label>이름 : </label>
+		<input type="text" name="name" id="name">
+		<br>
+		<label>아이디 : </label>
+		<input type="text" name="userid" id="userid">
+		<br>
+		<label>비밀번호 : </label>
+		<input type="password" name="password" id="password">
+		<br>
+		<label>비밀번호확인 : </label>
+		<input type="password" name="password2" id="password2">
+		<br>
+		<input type="submit" value="제출" onclick="return test5();">		
+    </form>
+    <script>
+        function test5(){
+            var name = document.getElementById('name').value;
+            var userid= document.getElementById('userid').value;
+            var password= document.getElementById('password').value;
+            var password2 = document.getElementById('password2').value; 
+
+            console.log("name : " + name);
+            console.log("userid : " + userid);
+            console.log("password : " + password);
+            console.log("password2 : " + password2);
+
+            if(password == password2){
+                alert('비밀번호가 일치합니다.');
+            }else{
+                alert('비밀번호가 틀립니다.');
+                //document.getElementById('password2').focus();
+                document.getElementById('password2').select();
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <hr>
+    <h1> 이벤트 전달 </h1>
+    <h3>이벤트 버블링</h3>
+    <p>자식 노드에서 부모 노드로 이벤트가 전달된다.</p>
+    <div onclick="test6('1번 div');" class="div-test div1">
+        <div onclick="test6('2번 div');" class="div-test div2">
+            <div onclick="test6('3번 div');" class="div-test div3">
+                <div onclick="test6('4번 div');" class="div-test div4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function test6(msg){
+            alert(msg);
+        }
+    </script>
+
+    <hr>
+
+    <h3>이벤트 버블링 막기</h3>
+    <div onclick="test7('1번 div');" class="div-test div1">
+        <div onclick="test7('2번 div');" class="div-test div2">
+            <div onclick="test7('3번 div');" class="div-test div3">
+                <div onclick="test7('4번 div');" class="div-test div4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function test7(msg,e){
+
+            var event = e || window.event;
+            alert(msg);
+
+            // ie 제외
+            if(event.stopPropagation()){
+                event.stopPropagation();
+            }
+            // ie 전용
+            event.cancelBubble = true;
+        }
+    </script>
+
+    <br><br><br>
+    <br><br><br>
+    <a href="../index.html">처음으로 돌아가기</a>
+
+</body>
+</html>

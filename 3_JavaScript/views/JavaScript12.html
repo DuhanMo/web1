@@ -4,104 +4,99 @@
     <meta charset="UTF-8">
     <title>JavaScript 내장함수</title>
     <style>
-        .area {
-            background: lightgrey;
-            border: 1px solid black;
-            height: 150px;
-        }
-
-        .area-big {
-            background: lightgrey;
-            border: 1px solid black;
-            height: 250px;
-        }
+        .area{background: lightgray; border: 1px solid black; height: 150px;}
+        .area-big{background: lightgray; border:1px solid black; height: 250px;}
     </style>
 </head>
-
 <body>
     <h1>JavaScript 내장함수</h1>
     <h3>인코딩과 디코딩에 관련된 내장함수</h3>
-    <p>
-        escape() : 영문 알파벳, 숫자, 일부 특수문자(@,*,-,_,.,/)를 제외한 모든 문자를 인코딩한다.<br>
-        encodeURI() : escape 에서 인터넷 주소에 사용되는 일부 특수문자(:,;,/,=,?,?,&<)는 변환하지 않는다<br>
-        encodeURIComponent() : 알파벳과 숫자를 제외한 모든 문자를 인코딩한다.(UTF-8 방식)<br>
-        <br>
-        unescape() : escape()로 인코딩 된 문자를 디코딩한다.<br>
-        decodeURI() : encodeURI 로 인코딩된 문자를 디코딩한다.<br>
-        decodeURIComponent() : encodeURIComponent() 로 인코딩된 문자를 디코딩한다.
+    <p>escape() : 영문 알파벳, 숫자, 일부 특수문자(@,*,-,_,.,/)를 제외한 모든 문자를 인코딩한다.<br>
+       encodeURI() : escape에서 인터넷 주소에 사용되는 일부 특수문자(:,;,/,=,?,&)는 변환하지 않는다.<br>
+       encodeURIComponent() : 알파벳과 숫자를 제외한 모든 문자를 인코딩한다.(UTF-8방식)<br>
+       <br>
+       unescape() : escape()로 인코딩 된 문자를 디코딩한다.<br>
+       decodeURI() : encodeURI로 인코딩된 문자를 디코딩한다.<br>
+       decodeURIComponent() : encodeURIComponent()로 인코딩된 문자를 디코딩한다.
     </p>
+
     <button onclick="test1();">실행확인</button>
     <div id="area1" class="area"></div>
     <script>
-        function test1() {
-            var uri = 'http://www.naver.com?test=한글입니다.'; // 이 주소는 무슨 방식? ?
+        function test1(){
+            var uri = 'http://www.naver.com?test=한글입니다.';   // 이주소는 무슨 방식??, ?뒤에는 있는 뭐라부른다?
+
             var esURI = escape(uri);
             var enURI = encodeURI(uri);
             var enURIC = encodeURIComponent(uri);
 
             var area1 = document.getElementById('area1');
-            area1.innerHTML += "escape() : " + esURI + '<br>';
-            area1.innerHTML += "encodeURI() : " + enURI + '<br>';
-            area1.innerHTML += "encodeURIComponent() : " + enURIC + '<br>';
+            area1.innerHTML += "escape() : " + esURI + "<br>";
+            area1.innerHTML += "encodeURI() : " + enURI + "<br>";
+            area1.innerHTML += "encodeURIComponent() : " + enURIC + "<br>"; 
 
-
-            area1.innerHTML += "unescape() : " + unescape(esURI) + '<br>';
-            area1.innerHTML += "decodeURI() : " + decodeURI(enURI) + '<br>';
-            area1.innerHTML += "decodeURIComponent() : " + decodeURIComponent(enURIC) + '<br>';
+            area1.innerHTML += "unescape() : " + unescape(esURI) + "<br>";
+            area1.innerHTML += "decodeURI() : " + decodeURI(enURI) + "<br>";
+            area1.innerHTML += "decodeURIComponent() : " + decodeURIComponent(enURIC) + "<br>";
         }
     </script>
+
     <hr>
 
     <h3>eval() 함수</h3>
     <p>문자열을 자바스크립트 코드로 변환해 실행하는 함수이다.</p>
-
-    <label> 숫자 1 입력</label>
+    <label>숫자 1 입력</label>
     <input type="text" id="number1"><br>
-    <label> 숫자 2 입력</label>
-    <input type="text" id="number2"> <br>
+    <label>숫자 2 입력</label>
+    <input type="text" id="number2"><br>
     <button onclick="test2();">실행확인</button>
     <div id="area2" class="area"></div>
-
     <script>
         function test2(){
             var testEval = "";
             testEval += "var number1 = parseInt(document.getElementById('number1').value);";
             testEval += "var number2 = parseInt(document.getElementById('number2').value);";
-            testEval += "var sum = 0;";
-            testEval += "sum = number1 + number2;";
-            testEval += "document.getElementById('area2').innerHTML += number1 + '과' + number2 + '의 합은 : ' + sum + '입니다';";
+            testEval += "var sum =0;";
+            testEval += "sum = number1+ number2;";
+            testEval += "document.getElementById('area2').innerHTML +=" 
+                     + "number1 + '과' + number2 +'의 합은 : ' + sum +'입니다.';"; 
             eval(testEval);
         }
     </script>
+
     <hr>
+
     <h3>infinity 와 NaN</h3>
-    <p>
-        대부분의 프로그래밍 언어는 0으로 숫자를 나누면 자동으로 오류 발생하고 프로그램이 종료된다.<br>
-        하지만 자바스크립트는 0으로 숫자를 나누면 infinity 라는 값이 들어가게 되고<br>
-        자바스크립트가 표현할 수 없는 숫자는 NaN(Not a Number)으로 표시된다.
+    <p>대부분의 프로그래밍 언어는 0으로 숫자를 나누면 자동으로 오류가 발생하고 프로그램이 종료된다.<br>
+       하지만 자바스크립트는 0으로 숫자를 나누면 infinity라는 값이 들어가게 되고<br>
+       자바스크립트가 표현할 수 없는 숫자는 NaN(Not a Number)으로 표시된다.
     </p>
     <button onclick="test3();">실행확인</button>
     <div id="area3" class="area"></div>
     <script>
-        function test3() {
+        function test3(){
             var num1 = 10/0;
-            var num2 = 10 / 'a';
+            var num2 = 10/'a';
+
             var area3 = document.getElementById('area3');
-            area3.innerHTML += "10/0 : " + num1 + '<br>';
-            area3.innerHTML += "10/'a' : " + num2 + '<br>';
-            area3.innerHTML += "isFinite() : " + isFinite(num1) + '<br>';
-            area3.innerHTML += "num1 == Infinity : " + (num1 ==Infinity) + "<br>";
 
-            var num3 = -10/0;
-            area3.innerHTML += "num1 == Infinity : " + (num3 ==Infinity) + "<br>";
-            //NaN는 비교 연산자로 확인할 수 없다.
-            // true를 리턴하지 않기 대문에 else내용이 실행된다
-            if(num2 == NaN){
-                area3.innerHTML += "num2는 숫자가 아닙니다.<br>";
+            area3.innerHTML += "10/0 : " + num1 + "<br>";
+            area3.innerHTML += "10/ 'a' : " + num2 + "<br>"; 
+            area3.innerHTML += "isFinite() : " + isFinite(num1) + "<br>"; // 유한한 숫자이면 isFinite-> true
+                                                                          // 무한한 숫자또는 숫자가 아니면 ->false
+            area3.innerHTML += "num1 == Infinity : " + (num1 == Infinity) + "<br>";
 
-            }else{
-                area3.innerHTML += "num2는 숫자입니다.<br>";
-            }
+            var num3 = -10/0; 
+            area3.innerHTML += "num3 == Infinity : " + (num3 == -Infinity) + "<br>";
+
+            // NaN는 비교연산자로 확인할 수 없다.
+            // true를 리턴하지 않기 때문에 else내용이 실행된다.
+            // if(num2 == NaN){
+            //     area3.innerHTML += "num2는 숫자가 아닙니다.<br>";
+            // }else{
+            //     area3.innerHTML += "num2는 숫자입니다.<br>";
+            // }
+
             // isNaN() 함수로 확인을 해야한다.
             if(isNaN(num2)){
                 area3.innerHTML += "num2는 숫자가 아닙니다.<br>";
@@ -110,33 +105,38 @@
             }
         }
     </script>
-    <hr>
-    <h3>Number(),parseInt(),parseFloat()</h3>
-    <p>
-        Number() 숫자로 바꿀 수 없다면 무조건 NaN을 리턴한다.<br>
-        parseInt(), parseFloat() 숫자로 변환할 수 있는 부분까지는 모두 숫자로 변환한다.<br>
 
+    <hr>
+
+    <h3>Number(),parseInt(),parseFloat()</h3>
+    <p>Number() 숫자로 바꿀 수 없으면 무조건 NaN을 리턴한다.<br>
+       parseInt(), parseFloat() 숫자로 변환할 수 있는 부분까지는 모두 숫자로 변환한다.
     </p>
     <button onclick="test4();">실행확인</button>
     <div id="area4" class="area-big"></div>
     <script>
-        function test4() {
-            var money='1000원;'
-            var dollar = '1.5$';
+        function test4(){
+            var money = '1000원';
+            var dollor = '1.5$';
 
             var area4 = document.getElementById('area4');
-            // 바꿀 수 없는 숫자는 NaN
-            area4.innerHTML += "Number(money) : " + Number(money) + '<br>';
-            area4.innerHTML += "Number(dollar) : " + Number(dollar) + '<br>';
-        }
-    </script>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <a href="../index.html">처음으로 돌아가기</a>
+            // 바꿀수 없는 숫자는 NaN
+            area4.innerHTML += "Number(money) : " + Number(money) + "<br>";
+            area4.innerHTML += "Number(dollor) : " + Number(dollor) + "<br>";
 
+            // 앞에서부터 정수로 인식할 수 있는 부분까지 변환
+            area4.innerHTML += "parseInt(money) : " + parseInt(money) + "<br>";
+            area4.innerHTML += "parseInt(dollor) : " + parseInt(dollor) + "<br>";
+
+            // 앞에서부터 실수로 인식할 수 있는 부분까지 변환
+            area4.innerHTML += "parseFloat(money) : " + parseFloat(money) + "<br>";
+            area4.innerHTML += "parseFloat(dollor) : " + parseFloat(dollor) + "<br>";
+        }
+
+    </script>
+
+    <br><br><br>
+    <br><br><br>
+    <a href="../index.html">처음으로 돌아가기</a>
 </body>
 </html>

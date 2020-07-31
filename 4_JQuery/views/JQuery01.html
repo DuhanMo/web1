@@ -1,10 +1,90 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>제이쿼리 개요</title>
+    <!-- 1. 직접 다운로드 받아 연결하기 -->
+    <!--
+        (개발자 전용 : Uncompressed)
+        일반 JS 파일 : 개발자나 사용자가 보기 쉽게 주석, 코드 정렬 등을 통해 가독성을
+                    유지하는 파일
+        (배포 전용 : Compressed)
+        min JS 파일 : 소스코드의 주석, 띄어쓰기, 구분자, 변수명을 최소화 및 간소화 하여
+                    네트워크(인터넷)상으로 전달할 데이터를 최소화 하여 전송 속도 및 효율을
+                    높이는 방법
+    -->
+    <script src="../resource/js/jquery-3.5.1.min.js"></script>
+<!--    2. cdn방식 방법-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--    <script src="https://code.jquery.com/jquery-3.5.1.min.js "></script>-->
+
 </head>
 <body>
-    
+    <h1>제이쿼리 개요</h1>
+    <h3>제이쿼리란?</h3>
+    <p>
+        2006년 1월에 존 레식에 의해 개발된 JS 경량화 라이브러리로 ,<br>
+        복잡한 자바스크립트 구문들을 짧고 쉽게 개발할 수 있도록 <br>
+        여러 기능들을 제공하는 라이브러리이다.
+    </p>
+    <p>
+        -- jQuery의 장점 --<br>
+        1. DOM과 관련된 스크립트들을 짧게 구현 가능하다.<br>
+        2. 일관된 이벤트 연결을 쉽게 구현<br>
+        3. ajax(비동기통신), 이벤트 처리 등을 폭넓게 지원한다.<br>
+        4. jQuery와 관련된 확장형 플러그인, 오픈API를 <br>
+            지원하여 이를 통해 차트, 슬라이드, 애니메이션 구현이 가능하다.
+    </p>
+    <hr>
+    <h3>제이쿼리 연결 방법</h3>
+    <p id="p1">
+        1. jQuery사이트에서 JS파일을 직접 다운로드 받아 연결하는 방법<br>
+        2. CDN(content delivery network)을 통해 연결하는 방법
+    </p>
+    <script>
+        // JS의 경우
+        // document.getElementById('p1').style.background = 'red';
+        // document.getElementById('p1').style.color = 'white';
+        // jQuery 의 경우
+        jQuery('#p1').css('background','black');
+        $('#p1').css('color','white');
+
+    </script>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <h3>$(document).ready()</h3>
+    <p id="p2">
+        현재 웹 문서를 로드 한 후 ready 함수를 실행한다<br>
+        해당 내용은 document.onload 와 동일하다.<br>
+        $(document).ready() 는 문서가 준비가 완료되면 <br>
+        매개변수로 전달된 함수를 실행한다라는 의미.<br>
+        window.onload = function(){}; 와 비슷한 기능을 수행한다.<br>
+        고전 이벤트 모델은 한번에 하나의 이벤트만 연결할 수 있다.<br>
+        document.onload = function(){....};
+    </p>
+    <script>
+        // window.onload = function(){}; 와 비슷한 기능을 수행한다.
+        // 고전 이벤트 모델은 한번에 하나의 이벤트만 연결할 수 있다.
+        // document.onload = function(){....};
+        // jQuery(document).ready(function () {
+        //     alert("안녕? 난 제이쿼리야!");
+        //
+        // });
+        // 1차 축약형
+        // $(document).ready(function () {
+        //     alert("안녕? 난 제이쿼리야!");
+        //
+        // });
+        // 최종 축약형
+        $(function () {
+            alert('제가 최종 축약형')
+            $('#p2').css('background','yellow'
+            );
+        })
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <form id="enrollform" form action="" method="post" onsubmit="return memberenroll();">
+        <ul>
+            <li>아이디<input type="text" id="userid"></li>
+            <li>패스워드<input type="password" id="userpwd"></li>
+            <li>패스워드확인<input type="password" id="pwdchk"></li>
+            <li>관심분야(java, html/css, javascript/jquery, 데이터베이스 중 다수 값이면 ,로 구분하여 작성<br>
+                <input type="text" id="like" placeholder="java, html/css, javascript/jquery, 데이터베이스 중 다수 값이면 ,로 구분"
+                       style="width: 500px" list="likeList">
+                <datalist id="likeList">
+                    <option id="java">java</option>
+                    <option id="html">html/css</option>
+                    <option id="js">javascript/jquery</option>
+                    <option id="db">데이터베이스</option>
+                </datalist>
+            </li>
+
+
+            <li>이메일<input type="email" id="email"></li>
+            <li>지식정도(상,중,하로 작성)
+
+                <label>
+                    <select name="level">
+                        <option value="상" selected="selected">상</option>
+                        <option value="중">중</option>
+                        <option value="하">하</option>
+                    </select>
+                </label>
+            </li>
+            <li>레벨 :
+                <label>
+                    <select name="level2">
+                        <option value="고수" selected="selected">고수</option>
+                        <option value="중수">중수</option>
+                        <option value="하수">하수</option>
+                    </select>
+                </label>
+            </li>
+            <li>전화번호
+                <select>
+                    <option>010</option>
+                    <option>011</option>
+                    <option>016</option>
+                    <option>019</option>
+                </select>
+                -<input type="text" style="width: 50px">
+                -<input type="text" style="width: 50px">
+            </li>
+                <input type="submit" value="회원가입">
+                <input type="reset" value="취소">
+
+        </ul>
+    </form>
+    <button id="reply" onclick="showText();">댓글등록</button><br>
+    <textarea id="ta" style="display: none"></textarea>
+    <script>
+
+        function memberenroll() {
+            var id = document.getElementById('userid');
+            var pass = document.getElementById('userpwd');
+            var pass1 = document.getElementById('pwdchk');
+
+
+            if (!chk(/^[A-z][a-z\d]{8,11}$/, id, '아이디는 영문자와 숫자로 8글자 이상 12글자 이하, 숫자 하나이상 기호문자 한개로 구성되어야 합니다.')) {
+                return false;
+            }
+
+            if(!chk(/[0-9]/, id, '아이디는 영문자와 숫자로 8글자 이상 12글자 이하, 숫자 하나이상 기호문자 한개로 구성되어야 합니다.'))
+
+                return false;
+            if(!chk(/[*!&]/,id,'아이디는 영문자와 숫자로 8글자 이상 12글자 이하, 숫자 하나이상 기호문자 한개로 구성되어야 합니다.')){
+                return false;
+            }
+
+            if (!chk(/^[a-z][a-z\d]{8,11}[*!&]$/, pass, '암호는 영문자와 숫자로 8글자이상 12글자 이하, 숫자 하나이상 기호문자 한개로 입력하세요')) {
+                return false;
+            }
+            if(!chk(/[0-9]/,pass,'암호는 영문자와 숫자로 8글자이상 12글자 이하, 숫자 하나이상 기호문자 한개로 입력하세요')){
+                return false;
+            }
+            if(!chk(/[*!&]/,pass,'암호는 영문자와 숫자로 8글자이상 12글자 이하, 숫자 하나이상 기호문자 한개로 입력하세요')){
+                return false;
+            }
+            if (pass.value != pass1.value) {
+                alert('비밀번호 확인!');
+                return false;
+            }
+
+        }
+
+        function chk(re, ele, msg) {
+            if (!re.test(ele.value)) { // regExp.test() 정규표현식에 있는 내용이 있으면 true, 없으면 false
+                alert(msg);
+                ele.select();
+                return false;
+            }
+            return true;
+        }
+    function showText() {
+            var ta =document.getElementById('ta');
+            ta.style.display='block';
+
+    }
+
+    </script>
+</body>
+</html>

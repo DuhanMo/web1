@@ -40,7 +40,7 @@
                 $(this).html('<h1>test ' + index + "</h1>");
 
             });
-            $(this).html(function(index,content){
+            $('.test').html(function(index,content){
                 console.log(index + " : " + content);
             });
         });
@@ -73,7 +73,7 @@
                 $(this).text('<h1>test ' + index + "</h1>");
 
             });
-            $(this).text(function(index,text){
+            $('.test2').text(function(index,text){
                 console.log(index + " : " + text);
             });
         });

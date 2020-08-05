@@ -7,9 +7,13 @@
     <script>
         function checkBtn() {
             // 코드 작성
-            $('body>input').filter()
+
+                var chk = $('input[type=checkbox]').filter('input:checked');
+            for (let i = 0; i < chk.length; i++) {
+                console.log(chk[i].val());
 
 
+            }
         }
     </script>
 </head>

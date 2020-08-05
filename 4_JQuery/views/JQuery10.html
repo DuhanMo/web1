@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>객체 추가 삭제 메소드</title>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        .item{
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            margin: 5px;
+        }
+        #item1 { background: gold;}
+        #item2 { background: hotpink;}
+        #item3 { background: aquamarine;}
+    </style>
+</head>
+<body>
+    <h1>객체 추가 삭제 메소드</h1>
+    <h3>요소 추가 Part1</h3>
+    <p>
+        $(A).appendTo(B) : A를 B요소 안의 마지막 부분에 추가<br>
+        $(A).prependTo(B) : A를 B요소 안의 제일 앞부분에 추가<br>
+        $(A).insertAfter(B) : A를 B요소 뒤에 추가<br>
+        $(A).insertBefore(B) : A를 B요소 앞에 추가
+
+
+    </p>
+    <h1 id="test1"><label>|기준|</label></h1>
+    <h1 id="test2"><label>|기준|</label></h1>
+    <h1 id="test3"><label>|기준|</label></h1>
+    <h1 id="test4"><label>|기준|</label></h1>
+    <script>
+        // $(function () {
+        //     var cnt = 0;
+        //     var interval = setInterval(function () {
+        //         $('<label>appendTo()'+ cnt++ +'<label>').appendTo($('#test1'));
+        //         $('<label>prependTo()'+cnt+++'<label>').prependTo($('#test2'));
+        //         $('<label>insertAfter()'+cnt+++'<label>').insertAfter($('#test3'));
+        //         $('<label>insertBefore()'+cnt+++'<label>').insertBefore($('#test4'));
+        //         setTimeout(function () {
+        //             clearInterval(interval);
+        //
+        //         },2000);
+        //     },1000);
+        //
+        // });
+    </script>
+    <h3>요소 추가 메소드 part2</h3>
+    <p>
+        $(A).append(B) : B를 A요소 안의 마지막 부분에 추가<br>
+        $(A).prepend(B) : B를 A요소 안의 제일 앞부분에 추가<br>
+        $(A).after(B) : B를 A요소 뒤에 추가<br>
+        $(A).before(B) : B를 A요소 앞에 추가
+    </p>
+    <h1 id="test5"><label>과일상자 : </label></h1>
+    <h1 id="test6"><label>과일상자 : </label></h1>
+    <h1 id="test7"><label>과일상자 : </label></h1>
+    <h1 id="test8"><label>과일상자 : </label></h1>
+    <script>
+        $(function () {
+            var delim = ", ";
+            var arr1 = ['딸기','무화과','파인애플','망고','포도'];
+            var arr2 = ['오렌지','복숭아','자몽','키위'];
+
+            var cnt=0;
+            var interval = setInterval(function () {
+                $('#test5').append(arr1[cnt]+delim);
+                $('#test6').prepend(arr2[cnt]+delim);
+                $('#test7').after(arr1[cnt]+delim);
+                $('#test8').before(arr2[cnt]+delim);
+                cnt++;
+                setTimeout(function (  ) {
+                    clearInterval(interval);
+                },4000);
+            },1000);
+        });
+    </script>
+<!--
+        appendTo는 뒤에 있는 객체에 앞에 있는 내용을 붙이겠다는 의미고
+        append는 앞에 있는 객체에 뒤라는 객체를 붙이겠다는 의
+-->
+    <p>
+        clone() : 지정한 요소를 복사할 때 사용한다. <br>
+        remove() : 선택된 노드를 dom에서 제거한다.<br>
+        detach() : remove 함수처럼 선택된 노드를 삭제합니다.<br>
+        하지만 detach 함수에 의해 제거된 노드를 임시로 보관할 수 있어서,
+        제거와 삽입을 반복할 때 많이 사용한다.<br>
+        empty() : 선택 객체의 자식노드를 삭제한다.<br>
+        선택한 객체를 삭제하는 remove와는 다르게 자식노드를 삭제하기 때문에 <br>
+        선택객체는 남아있습니다. 객체(요소)를 제거할 때 사용한다.
+
+    </p>
+    <div id="cloneTest">
+
+        <div id="item1" class="item">
+            <button class="copy">복사하기</button>
+            <button class="delete">삭제하기</button>
+        </div>
+
+        <div id="item2" class="item">
+            <button class="copy">복사하기</button>
+            <button class="delete">삭제하기</button>
+        </div>
+
+        <div id="item3" class="item">
+            <button class="copy">복사하기</button>
+            <button class="delete">삭제하기</button>
+        </div>
+
+    </div>
+    <button id="btn1">살림</button>
+    <div id="result"></div>
+    <script>
+        $(function () {
+            $('.copy').click(function () {
+                // clone() : 요소의 틀만 복사(이벤트,데이터 정보는 복사하지 않는다.)
+                // cline(true/false) : true - 요소의 모든 내용 복사
+                //                      false - 기본값과 동일하다.
+            $(this).parent().clone().appendTo('#result');
+            });
+            var testDetach;
+            $('.delete').click(function () {
+                testDetach = $(this).parent().detach();
+                // $(this).parent().parent().remove(); // 노드를 돔에서 제거
+                // $(this).parent().detach();
+                $(this).parent().empty();
+            });
+            // 임시저장으로 살리기
+            $('#btn1').click(function () {
+                $('#result').before(testDetach);
+            });
+        });
+    </script>
+</body>
+</html>
